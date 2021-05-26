@@ -126,6 +126,7 @@ class Config:
         loop="auto",
         http="auto",
         ws="auto",
+        websocket_max_message_size = 16 * 1024 * 1024,
         lifespan="auto",
         env_file=None,
         log_config=LOGGING_CONFIG,
@@ -193,7 +194,7 @@ class Config:
         self.headers = headers if headers else []  # type: List[str]
         self.encoded_headers = None  # type: List[Tuple[bytes, bytes]]
         self.factory = factory
-
+        self.websocket_max_message_size = websocket_max_message_size
         self.loaded = False
         self.configure_logging()
 
